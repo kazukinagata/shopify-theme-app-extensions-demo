@@ -1,0 +1,26 @@
+{% assign avg_rating = block.settings.product.metafields.demo.avg_rating.value | round %}
+<script>
+  console.log("settings", {{ settings | json }});
+</script>
+<span style="color:{{ block.settings.colour }}">
+  {% render 'stars', rating: avg_rating %}
+</span>
+{% if avg_rating >= 4 %}
+  <br>
+  <img src="{{ "thumbs-up.png" | asset_img_url: '15x' }}" height="15" width="15" loading="lazy">
+  {{ 'ratings.home.recommendationText' | t }}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Star Rating",
+  "target": "section",
+  "settings": [
+    // この設定により、block.settings.product に product の情報が自動的に入る
+    // SEE: https://shopify.dev/docs/apps/build/online-store/theme-app-extensions/configuration#autofill-example
+    { "type": "product", "id": "product", "label": "product", "autofill": true },
+    { "type": "color", "id": "colour", "label": "Star Colour", "default": "#ff0000" }
+  ]
+}
+{% endschema %}
+

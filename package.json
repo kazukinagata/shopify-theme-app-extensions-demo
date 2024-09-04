@@ -1,0 +1,23 @@
+{
+  "name": "theme-app-extensions-demo",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "shopify": "shopify",
+    "build": "shopify app build",
+    "dev": "shopify app dev",
+    "dev:reset": "shopify app dev --reset",
+    "info": "shopify app info",
+    "generate": "shopify app generate",
+    "deploy": "shopify app deploy"
+  },
+  "dependencies": {},
+  "trustedDependencies": [
+    "@shopify/plugin-cloudflare"
+  ],
+  "author": "kazukinagata",
+  "private": true,
+  "workspaces": [
+    "extensions/*"
+  ]
+}
